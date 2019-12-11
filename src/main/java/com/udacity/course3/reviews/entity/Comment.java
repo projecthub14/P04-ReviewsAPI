@@ -1,6 +1,7 @@
 package com.udacity.course3.reviews.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="comments")
@@ -12,6 +13,7 @@ public class Comment {
     private int commentId;
 
     @Column(name="comment_text")
+    @NotEmpty(message = "CommentText is mandatory")
     private String commentText;
 
     @ManyToOne

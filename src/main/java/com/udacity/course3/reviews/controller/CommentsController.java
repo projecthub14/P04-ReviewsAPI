@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -42,7 +43,7 @@ public class CommentsController {
      * @param reviewId The id of the review.
      */
     @RequestMapping(value = "/reviews/{reviewId}", method = RequestMethod.POST)
-    public ResponseEntity<String> createCommentForReview(@PathVariable("reviewId") Integer reviewId,@RequestBody Comment comment) {
+    public ResponseEntity<String> createCommentForReview( @PathVariable("reviewId") Integer reviewId, @Valid @RequestBody Comment comment) {
         Optional<Review> review = reviewRepository.findById(reviewId);
 
 
@@ -97,4 +98,6 @@ public class CommentsController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+
 }

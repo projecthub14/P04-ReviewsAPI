@@ -3,6 +3,7 @@ package com.udacity.course3.reviews.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 @Entity
 @Table(name="reviews")
@@ -14,6 +15,7 @@ public class Review {
     private int reviewId;
 
     @Column(name="review_text")
+    @NotEmpty(message = "ReviewText is mandatory")
     private String reviewText;
 
 

@@ -2,8 +2,10 @@ package com.udacity.course3.reviews.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.udacity.course3.reviews.entityMongo.ReviewMongo;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Entity
@@ -16,9 +18,11 @@ public class Product {
     private int productId;
 
     @Column(name="product_name")
+    @NotEmpty(message = "ProductName is mandatory")
     private String productName;
 
     @Column(name="product_count")
+    @Range(min = 1, message = "productCount is mandatory")
     private int productCount;
 
     @OneToMany(cascade = CascadeType.PERSIST , mappedBy = "product")
